@@ -1,9 +1,20 @@
 <?php
     class Tamagotchi
     {
+        private $name;
         private $food;
         private $attention;
         private $rest;
+
+        function setName($new_name)
+        {
+            $this->name = $new_name;
+        }
+
+        function getName()
+        {
+            return $this->name;
+        }
 
         function setFood($new_food)
         {
