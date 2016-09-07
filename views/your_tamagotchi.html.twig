@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>Your Tamagotchi</title>
+</head>
+<body>
+    <h1>{{ tamagotchi.getName }}</h1>
+    <p>img filler</p>
+    <button type="submit" name="feed" value="">Feed</button>
+    <h1>{{favoriteband}} rules!!!</h1>
+    <h3>I want {{numberofslicesofpiethatiwant}} slices of apple pie</h3>
+    {% for currentfruit in favoritefruits %}
+        <h2>I want to eat a {{currentfruit}}</h2>
+    {% endfor %}
+
+    <h4>The fourth thing in my array is: {{favoritefruits[3]}}</h4>
+</body>
+</html>

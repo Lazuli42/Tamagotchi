@@ -1,14 +1,22 @@
 <?php
     class Tamagotchi
     {
-        private $name;
+        public $name;
         private $food;
         private $attention;
         private $rest;
 
+        function __construct($name)
+        {
+            $this->name = $name;
+            $this->food = 50;
+            $this->attention = 50;
+            $this->rest = 50;
+        }
+
         function setName($new_name)
         {
-            $this->name = $new_name;
+            $this->name = (string) $new_name;
         }
 
         function getName()
@@ -44,6 +52,16 @@
         function getRest()
         {
             return $this->rest;
+        }
+
+        function save()
+        {
+            array_push($_SESSION['tamagotchi_names'], $this);
+        }
+
+        static function getAll()
+        {
+            return $_SESSION['tamagotchi_names'];
         }
 
     }
