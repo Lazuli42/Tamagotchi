@@ -56,13 +56,32 @@
 
         function save()
         {
-            array_push($_SESSION['tamagotchi_names'], $this);
+            $_SESSION['tamagotchi'] = $this;
         }
 
-        static function getAll()
+        static function getTamagotchi()
         {
-            return $_SESSION['tamagotchi_names'];
+            return $_SESSION['tamagotchi'];
         }
 
+        function feed()
+        {
+            if ($this->food <= 90) {
+            $this->food += 10;
+        }   else if ($this->food <= 100) {
+            echo $this->name . " is full.";
+        }
     }
- ?>
+
+        function rest()
+        {
+            if ($this->rest <= 90) {
+            $this->rest += 10;
+        }   else if ($this->rest <= 100) {
+            echo $this->name . "is no longer sweepy.";
+        }
+    }
+
+}
+
+?>

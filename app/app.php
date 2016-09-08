@@ -3,8 +3,8 @@
     require_once __DIR__."/../src/Tamagotchi.php";
 
     session_start();
-    if (empty($_SESSION['tamagotchi_names'])) {
-        $_SESSION['tamagotchi_names'] = array();
+    if (empty($_SESSION['tamagotchi'])) {
+        $_SESSION['tamagotchi'] = array();
     }
 
     $app = new Silex\Application();
@@ -20,7 +20,32 @@
 
     $app->post("/your_tamagotchi", function() use ($app) {
         $tamagotchi = new Tamagotchi($_POST['name']);
-        return $app['twig']->render('your_tamagotchi.html.twig', array('tamagotchi' => $tamagotchi, 'favoriteband' => 'motorhead', 'numberofslicesofpiethatiwant' => 4, 'favoritefruits' => ['pluot', 'kumquot', 'blackberry', 'starfruit', 'passionfruit']));
+        $tamagotchi->save();
+        return $app['twig']->render('your_tamagotchi.html.twig', array('tamagotchi' => $tamagotchi));
+    });
+
+    $app->post("/feed", function() use ($app) {
+        $tamagotchi = Tamagotchi::getTamagotchi();
+        $tamagotchi->feed();
+        return $app['twig']->render('your_tamagotchi.html.twig', array('tamagotchi' => $tamagotchi));
+    });
+
+    $app->post("/rest", function() use ($app) {
+        $tamagotchi = Tamagotchi::getTamagotchi();
+        $tamagotchi->rest();
+        return $app['twig']->render('your_tamagotchi.html.twig', array('tamagotchi' => $tamagotchi));
+    });
+
+    $app->post("/attention", function() use ($app) {
+        $tamagotchi = Tamagotchi::getTamagotchi();
+        $tamagotchi->attend();
+        return $app['twig']->render('your_tamagotchi.html.twig', array('tamagotchi' => $tamagotchi));
+    });
+
+    $app->post("/time", function() use ($app) {
+        $tamagotchi = Tamagotchi::getTamagotchi();
+        $tamagotchi->attend();
+        return $app['twig']->render('your_tamagotchi.html.twig', array('time' => $time));
     });
 
     return $app;

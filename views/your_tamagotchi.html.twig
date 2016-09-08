@@ -4,14 +4,24 @@
 </head>
 <body>
     <h1>{{ tamagotchi.getName }}</h1>
-    <p>img filler</p>
-    <button type="submit" name="feed" value="">Feed</button>
-    <h1>{{favoriteband}} rules!!!</h1>
-    <h3>I want {{numberofslicesofpiethatiwant}} slices of apple pie</h3>
-    {% for currentfruit in favoritefruits %}
-        <h2>I want to eat a {{currentfruit}}</h2>
-    {% endfor %}
-
-    <h4>The fourth thing in my array is: {{favoritefruits[3]}}</h4>
+    <p>This will be an image of adorable, little {{ tamagotchi.getName }}!</p>
+    <div class = "container">
+        <form action="/feed" method="post">
+            <label for='feed'>Hunger Level: {{tamagotchi.getFood}}</label>
+            <button type="submit" name="feed">Feed!</button>
+        </form>
+        <form action="/rest" method="post">
+            <label for='rest'>Rest Level: {{tamagotchi.getRest}}</label>
+            <button type="submit" name="rest">Naptime!</button>
+        </form>
+        <form action="/attend" method="post">
+            <label for='feed'>Happiness Level: {{tamagotchi.getAttention}}</label>
+            <button type="submit" name="attend">Play!</button>
+        </form>
+        <form action="/time" method="post">
+            <label for='time'>Current time: {{ time }}</label>
+            <button type="submit" name="time">Onward!</button>
+        </form>
+    </div>
 </body>
 </html>
