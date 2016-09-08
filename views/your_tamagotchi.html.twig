@@ -7,21 +7,21 @@
     <p>This will be an image of adorable, little {{ tamagotchi.getName }}!</p>
     <div class = "container">
         <form action="/feed" method="post">
-            <label for='feed'>Hunger Level: {{tamagotchi.getFood}}</label>
+            <label for='feed'>Gluttony points: {{tamagotchi.getFood}}</label>
             <button type="submit" name="feed">Feed!</button>
         </form>
         <form action="/rest" method="post">
-            <label for='rest'>Rest Level: {{tamagotchi.getRest}}</label>
+            <label for='rest'>Time spent in dream realm: {{tamagotchi.getRest}}</label>
             <button type="submit" name="rest">Naptime!</button>
         </form>
-        <form action="/attend" method="post">
-            <label for='feed'>Happiness Level: {{tamagotchi.getAttention}}</label>
+        <form action="/attention" method="post">
+            <label for='feed'>General amount of mirth: {{tamagotchi.getAttention}}</label>
             <button type="submit" name="attend">Play!</button>
         </form>
-        <form action="/time" method="post">
-            <label for='time'>Current time: {{ time }}</label>
+        <!-- <form action="/time" method="post">
+            <label for='time'>Current time: </label>
             <button type="submit" name="time">Onward!</button>
-        </form>
+        </form> -->
     </div>
 </body>
 </html>

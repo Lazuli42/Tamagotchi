@@ -66,21 +66,39 @@
 
         function feed()
         {
-            if ($this->food <= 90) {
-            $this->food += 10;
-        }   else if ($this->food <= 100) {
-            echo $this->name . " is full.";
+            if ($this->food < 100) {
+            $this->food += 25;
+            $this->rest -= 10;
+            $this->attention -= 5;
+        }
+        if ($this->food >= 100) {
+            echo $this->name . " is full of souls.";
         }
     }
 
         function rest()
         {
-            if ($this->rest <= 90) {
-            $this->rest += 10;
-        }   else if ($this->rest <= 100) {
-            echo $this->name . "is no longer sweepy.";
+            if ($this->rest < 100) {
+            $this->rest += 25;
+            $this->attention -= 5;
+            $this->food -= 25;
+        }
+        if ($this->rest >= 100) {
+            echo $this->name . " is no wonger sweepy.";
         }
     }
+
+    function attend()
+    {
+        if ($this->attention < 100) {
+        $this->rest -= 20;
+        $this->attention += 15;
+        $this->food -= 10;
+    }
+    if ($this->attention >= 100) {
+        echo $this->name . " desires boredom. Enough doting, human.";
+    }
+}
 
 }
 
